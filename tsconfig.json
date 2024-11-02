@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+
+  "compilerOptions": {
+    // Consult default values with https://github.com/tsconfig/bases (and https://node.green/ or https://kangax.github.io/compat-table/ for extra detail)
+    // "target" and "lib" should cover the feature set available in the target engine version where the scripts will be run.
+
+    // Use settings from https://github.com/tsconfig/bases/tree/main/bases/ -> nodeXX.json
+    "lib": ["es2023"],
+    "module": "node16",
+    "target": "es2022",
+
+    "outDir": "dist",
+    "noEmitOnError": true,
+    "noErrorTruncation": true,
+    "isolatedModules": true, // Make sure that we can run tests with ts-jest `isolatedModules` option enabled
+
+    "moduleResolution": "node16",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "allowJs": true,
+    "checkJs": true,
+    "esModuleInterop": true,
+    "exactOptionalPropertyTypes": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "allowUnreachableCode": false,
+    "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": true,
+    "strictBuiltinIteratorReturn": true,
+    "noUncheckedSideEffectImports": true
+  },
+
+  "include": ["src/**/*"]
+}
