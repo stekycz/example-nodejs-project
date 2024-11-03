@@ -2,6 +2,9 @@
   "name": "@stekycz/example-project",
   "private": true,
   "type": "module",
+  "bin": {
+    "get-line": "./bin/get-line"
+  },
   "scripts": {
     "build": "rm -rf ./dist && tsc",
     "check:prettier": "prettier --check .",
