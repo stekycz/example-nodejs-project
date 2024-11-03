@@ -14,12 +14,15 @@
     "prettier": "prettier --write .",
     "test": "jest"
   },
+  "dependencies": {
+    "@aws-sdk/client-s3": "~3.685.0"
+  },
   "devDependencies": {
     "@eslint/eslintrc": "~3.1.0",
     "@eslint/js": "~9.14.0",
     "@faker-js/faker": "~9.1.0",
     "@jest/globals": "~29.7.0",
-    "@types/node": "^22.8.6",
+    "@types/node": "^22.8.7",
     "eslint": "~9.14.0",
     "eslint-config-prettier": "~9.1.0",
     "eslint-import-resolver-typescript": "~3.6.3",

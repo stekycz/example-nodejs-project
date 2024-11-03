@@ -1,11 +1,13 @@
 import path from 'node:path';
 import { parseArgs } from 'node:util';
+import { S3Client } from '@aws-sdk/client-s3';
 import {
   IndexedBlobLineReader,
   type BlobLineReader,
 } from '../BlobLineReader.js';
 import { BinaryBlobIndex } from '../blob/index/BinaryBlobIndex.js';
 import { GracefulBlobIndexReader } from '../blob/index/GracefulBlobIndexReader.js';
+import { AwsS3BlobStorage } from '../blob/storage/AwsS3BlobStorage.js';
 import { FileSystemBlobStorage } from '../blob/storage/FileSystemBlobStorage.js';
 import type { BlobIndexReader, BlobIndex } from '../blob/index/types.js';
 import type { BlobStorage } from '../blob/storage/types.js';
@@ -47,13 +49,21 @@ if (
   );
 }
 
-const blobStorage: BlobStorage = new FileSystemBlobStorage(
+const s3Client = new S3Client();
+const blobBucketName = 'blob-bucket';
+const blobStorage: BlobStorage = new AwsS3BlobStorage(
+  s3Client,
+  blobBucketName,
+  'indices',
+);
+
+const indexStorage: BlobStorage = new FileSystemBlobStorage(
   INDEX_FILE_SYSTEM_DIRECTORY_PATH,
 );
 
 const blobIndex: BlobIndex = new BinaryBlobIndex(
   blobStorage,
-  blobStorage,
+  indexStorage,
   LINE_DELIMITER,
 );
 
